@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { RouteName } from "../../types";
+import { RouteName } from "../../../types";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ACTIVE_COLOR, INACTIVE_COLOR, NAVIGATION_COLOR, WHITE_COLOR } from "../../consts";
-import GraficsScreen from "../pages/GraficsScreen";
-import HomeScreen from "../pages/HomeScreen";
+import { ACTIVE_COLOR, INACTIVE_COLOR, NAVIGATION_COLOR, WHITE_COLOR } from "../../../consts";
+import GraficsScreen from "../../pages/GraficsScreen";
+import HomeScreen from "../../pages/HomeScreen";
 import { Ionicons } from '@expo/vector-icons'; 
 
 const Tab = createBottomTabNavigator();

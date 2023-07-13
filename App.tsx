@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { MENU_ICON, NAVIGATION_COLOR, WHITE_COLOR } from './consts';
-import TabNavigation from './src/component/TabNavigation';
+import TabNavigation from './src/component/TabNavigation/TabNavigation';
 
 const Stack = createStackNavigator();
 

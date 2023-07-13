@@ -6,3 +6,9 @@ export type Purchase = {
     description: string;
     value: number;
 }
+
+export type ClientInfo = {
+    name: string;
+    cardNumber: string;
+    expirationDate: string;
+}
