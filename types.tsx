@@ -12,3 +12,9 @@ export type ClientInfo = {
     cardNumber: string;
     expirationDate: string;
 }
+
+export type CustomBarChartData = {
+    labels: string[];
+    datasets: { data: number[] }[];
+  }
+  
