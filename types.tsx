@@ -16,5 +16,11 @@ export type ClientInfo = {
 export type CustomBarChartData = {
     labels: string[];
     datasets: { data: number[] }[];
-  }
-  
+}
+
+export type PurchaseData = {
+    date: string;
+    store: string;
+    description: string;
+    value: number;
+}

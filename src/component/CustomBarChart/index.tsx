@@ -6,8 +6,8 @@ import { CustomBarChartProps } from "./prop/CustomBarChartProps";
 const CustomBarChart: FC<CustomBarChartProps> = ({ data, yAxisLabel = 'R$', yAxisSuffix = 'k' }) => (
   <BarChart
     data={data}
-    width={Dimensions.get('window').width - 16}
-    height={220}
+    width={Dimensions.get('window').width - 36}
+    height={200}
     yAxisLabel={yAxisLabel}
     yAxisSuffix={yAxisSuffix}
     chartConfig={{

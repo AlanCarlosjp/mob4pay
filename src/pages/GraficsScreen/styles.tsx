@@ -9,6 +9,12 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    chartContainer: {
+
+    },
+    cardContainer:{
+      
+    }
   });
 
 export default styles;
