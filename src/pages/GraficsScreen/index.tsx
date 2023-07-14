@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { View } from "react-native";
+import { format } from "date-fns";
 import styles from "./styles";
 import CustomBarChart from "../../component/CustomBarChart";
 import PurchaseService from "../../service/Purchases";
@@ -17,30 +18,25 @@ const GraficsScreen: FC = () => {
   useEffect(() => {
     async function loadChartData() {
       const data = await PurchaseService.getPurchases();
-
-      // Junta as compras por mês
+      // Agrupa compras por mês
       const groupedData = data.reduce((acc, purchase) => {
         // Extrai o mês e o ano da data da compra
-        const month = new Date(purchase.date).getMonth();
-        const year = new Date(purchase.date).getFullYear();
-
-        const key = `${month}-${year}`;
-
+        const key = format(new Date(purchase.date), "yyyy-MM");
         if (!acc[key]) {
-          acc[key] = 1;
+          acc[key] = purchase.value;
         } else {
-          acc[key]++;
+          acc[key] += purchase.value;
         }
         return acc;
       }, {} as { [key: string]: number });
       // Transforma os dados agrupados em um formato adequado para o gráfico
+      const labels = Object.keys(groupedData).sort();
       const chartData = {
-        labels: Object.keys(groupedData),
-        datasets: [{ data: Object.values(groupedData) }]
+        labels,
+        datasets: [{ data: labels.map((label) => groupedData[label]) }]
       };
       setChartData(chartData);
     }
-
     loadChartData();
   }, []);
 
