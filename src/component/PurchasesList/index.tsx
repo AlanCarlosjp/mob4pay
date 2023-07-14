@@ -19,7 +19,7 @@ const PurchasesList: React.FC = () => {
   return (
     <FlatList
       data={purchases}
-      keyExtractor={(item) => item.date}
+      keyExtractor={(item) => item.store} 
       renderItem={({ item }) => <CardPurch data={item} />}
       initialNumToRender={3}
       maxToRenderPerBatch={3}

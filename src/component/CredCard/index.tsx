@@ -3,29 +3,20 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import ClientInfoService from '../../service/ClientInfoService';
 import { ClientInfo } from '../../../types';
+import formatDate from '../../utils/FormatDate';
+
+
 
 const CredCard = () => {
     const [clientInfo, setClientInfo] = useState<ClientInfo | null>(null);
 
     useEffect(() => {
-        const fetchClientInfo = async () => {
-            const data = await ClientInfoService.getClientInfo();
+        ClientInfoService.getClientInfo().then((data) => {
             if (data.length > 0) {
                 setClientInfo(data[0]);
             }
-        }
-
-        fetchClientInfo();
+        });
     }, []);
-
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        // Retorna no formato MM/YY
-        return `${month.toString().padStart(2, '0')}/${year.toString().slice(-2)}`;
-
-    }
 
     if (!clientInfo) {
         return (
@@ -42,22 +33,21 @@ const CredCard = () => {
             resizeMode="cover"
         >
             <View style={styles.cardContent}>
-                <Text style={styles.cardNumber}>
-                    {clientInfo.cardNumber}
-                </Text>
+                <Text style={styles.cardNumber}>{clientInfo.cardNumber}</Text>
                 <View style={styles.cardDetails}>
-                    <View>
-                        <Text style={styles.cardLabel}>Valid Thru</Text>
-                        <Text style={styles.cardInfo}>{formatDate(clientInfo.expirationDate)}</Text>
-                    </View>
-                    <View>
-                        <Text style={styles.cardLabel}>Card Holder</Text>
-                        <Text style={styles.cardInfo}>{clientInfo.name}</Text>
-                    </View>
+                    <CardDetail title="Valid Thru" content={formatDate(clientInfo.expirationDate)} />
+                    <CardDetail title="Card Holder" content={clientInfo.name} />
                 </View>
             </View>
         </ImageBackground>
     );
 }
+
+const CardDetail = ({ title, content }: { title: string, content: string }) => (
+    <View>
+        <Text style={styles.cardLabel}>{title}</Text>
+        <Text style={styles.cardInfo}>{content}</Text>
+    </View>
+);
 
 export default CredCard;

@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   card: {
-    padding: 15,
-    borderRadius: 5,
-    marginBottom: 10,
+    width: 400,
+    borderRadius: 0,
+    marginBottom: 0,
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center',
@@ -28,7 +28,7 @@ export default StyleSheet.create({
     color: '#9a9a9a',
   },
   details: {
-    marginLeft: 20, 
+    marginLeft: 10, 
   },
   text: {
     fontSize: 14,
