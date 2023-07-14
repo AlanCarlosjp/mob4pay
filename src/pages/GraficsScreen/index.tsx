@@ -19,6 +19,7 @@ const GraficsScreen: FC = () => (
         }}
       />
     </View>
+    <View  style={{height: 30}}/>
     <View style={styles.cardContainer}>
       <CardPurch data={{
         date: "2023-06-28T09:30:00",

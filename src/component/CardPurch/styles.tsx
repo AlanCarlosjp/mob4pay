@@ -2,39 +2,39 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   card: {
-    backgroundColor: "#fff",
     padding: 15,
     borderRadius: 5,
     marginBottom: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between' 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center',
   },
   dateContainer: {
-    backgroundColor: 'gray',
-    padding: 10,
+    backgroundColor: '#e6e6e6',
     alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    height: 80,
+    width: 80,
+    padding: 0
   },
   dateText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#9a9a9a',
   },
   monthText: {
     fontSize: 14,
-    color: 'white',
+    color: '#9a9a9a',
   },
   details: {
-    flex: 1,
+    marginLeft: 20, 
   },
   text: {
     fontSize: 14,
   },
   valueContainer: {
+    marginLeft: 10, 
     justifyContent: 'center',
   },
   valueText: {

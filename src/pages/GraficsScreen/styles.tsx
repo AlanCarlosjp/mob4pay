@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+      marginBottom: 180
     },
     chartContainer: {
 
