@@ -1,4 +1,4 @@
-export const NAVIGATION_COLOR = '#1f648b';
+export const NAVIGATION_COLOR = '#3e50b4';
 export const ACTIVE_COLOR = 'tomato';
 export const INACTIVE_COLOR = 'gray';
 export const WHITE_COLOR = 'white';

@@ -1,13 +1,18 @@
 import { FC } from "react";
 import { View } from "react-native";
-import { Text } from "react-native-elements";
 import styles from "./style";
+import CredCard from "../../component/CredCard";
+import PurchasesList from "../../component/PurchasesList";
 
 const HomeScreen: FC = () => (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+  <View style={styles.container}>
+    <View style={{padding: 20}} />
+    <CredCard />
+    <View style={{padding: 20}} />
+
+    <PurchasesList />
+  </View>
+);
 
 
-  export default HomeScreen;
+export default HomeScreen;

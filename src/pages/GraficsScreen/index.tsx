@@ -1,23 +1,22 @@
 import { FC, useEffect, useState } from "react";
-import { View, FlatList } from "react-native";
+import { View } from "react-native";
 import styles from "./styles";
 import CustomBarChart from "../../component/CustomBarChart";
-import CardPurch from "../../component/CardPurch";
 import PurchaseService from "../../service/Purchases";
-import { Purchase } from "../../../types";
+import PurchasesList from "../../component/PurchasesList";
 
 const GraficsScreen: FC = () => {
-  const [purchases, setPurchases] = useState<Purchase[]>([]);
-  const [chartData, setChartData] = useState<{labels: string[],
-    datasets: {data: number[]}[]}>({
+  const [chartData, setChartData] = useState<{
+    labels: string[],
+    datasets: { data: number[] }[]
+  }>({
     labels: [],
-    datasets: [{data: []}]
+    datasets: [{ data: [] }]
   });
 
   useEffect(() => {
-    async function loadPurchases() {
+    async function loadChartData() {
       const data = await PurchaseService.getPurchases();
-      setPurchases(data);
 
       // Junta as compras por mês
       const groupedData = data.reduce((acc, purchase) => {
@@ -32,20 +31,17 @@ const GraficsScreen: FC = () => {
         } else {
           acc[key]++;
         }
-
         return acc;
-      }, {} as {[key: string]: number});
-
+      }, {} as { [key: string]: number });
       // Transforma os dados agrupados em um formato adequado para o gráfico
       const chartData = {
         labels: Object.keys(groupedData),
-        datasets: [{data: Object.values(groupedData)}]
+        datasets: [{ data: Object.values(groupedData) }]
       };
-
       setChartData(chartData);
     }
 
-    loadPurchases();
+    loadChartData();
   }, []);
 
   return (
@@ -55,14 +51,8 @@ const GraficsScreen: FC = () => {
           data={chartData}
         />
       </View>
-      <View style={{height: 10}}/>
-        <FlatList
-          data={purchases}
-          keyExtractor={(item) => item.date}
-          renderItem={({ item }) => <CardPurch data={item} />}
-          initialNumToRender={3} 
-          maxToRenderPerBatch={3} 
-        />
+      <View style={{ height: 10 }} />
+      <PurchasesList />
     </View>
   );
 };
