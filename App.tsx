@@ -22,7 +22,8 @@ const App: FC = () => (
         options={{
           title: "Mob4Pay",
           headerLeft: () => (
-            <View>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{padding: 5}}/>
               <Ionicons name={MENU_ICON} size={24} color={WHITE_COLOR} />
             </View>
           ),

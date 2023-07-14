@@ -9,13 +9,13 @@ const CardPurch: React.FC<CardPurchProps> = ({ data }) => {
   // Convert the date string to a Date object
   const date = new Date(data.date);
 
-  // Format the date and month
   const day = format(date, 'd', { locale: ptBR });
   const month = format(date, 'MMM', { locale: ptBR });
 
   return (
     <View style={styles.card}>
       <View style={styles.dateContainer}>
+        <View style={{backgroundColor: 'red', height: 10}}/>
         <Text style={styles.dateText}>{day}</Text>
         <Text style={styles.monthText}>{month}</Text>
       </View>
